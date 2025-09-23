@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B.Finder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background-color: #f9f9f9;
+      padding: 10px 0;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #007acc;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+      color: #005fa3;
+    }
+
+    section {
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      color: #777;
+      font-size: 0.9em;
+    }
+
+    img {
+      display: block;
+      margin: 20px auto;
+      max-width: auto;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    /* Services styling */
+    #services ul {
+      padding: 0;
+      list-style: none;
+      max-width: 360px;
+      margin: 20px auto;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    #services ul li {
+      background-color: #fff;
+      padding: 20px 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 15px;
+      color: #333;
+      font-size: 16px;
+      border-bottom: none; /* Keeps clean card style */
+      font-weight: 600;
+      text-align: center;
+    }
+
+    /* Form styling */
+    section#form form {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 30px 25px 25px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+    }
+
+    section#form form .form-group {
+    position: relative;
+    margin-bottom: 28px;
+    }
+
+    section#form form label {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: #fff;
+    padding: 0 6px;
+    color: #999;
+    font-weight: 600;
+    font-size: 0.9rem;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    }
+
+    section#form form input,
+    section#form form textarea {
+    width: 100%;
+    padding: 14px 12px 14px 12px;
+    font-size: 1rem;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    outline-offset: 2px;
+    transition: border-color 0.3s ease;
+    font-family: inherit;
+    resize: vertical;
+    }
+
+    section#form form input:focus,
+    section#form form textarea:focus {
+    border-color: #007acc;
+    box-shadow: 0 0 5px rgba(0, 122, 204, 0.5);
+    }
+
+    section#form form input:focus + label,
+    section#form form textarea:focus + label,
+    section#form form input:not(:placeholder-shown) + label,
+    section#form form textarea:not(:placeholder-shown) + label {
+    top: -10px;
+    left: 8px;
+    font-size: 0.75rem;
+    color: #007acc;
+    }
+
+    section#form form button {
+    background-color: #007acc;
+    color: white;
+    border: none;
+    padding: 14px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0, 122, 204, 0.4);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    align-items: center;
+    }
+
+    section#form form button:hover {
+    background-color: #005fa3;
+    box-shadow: 0 8px 20px rgba(0, 95, 163, 0.6);
+    }
+
+    /* Responsive tweak */
+    @media (max-width: 450px) {
+    section#form form {
+        padding: 25px 15px 20px;
+    }
+    }
+
+
+    /* Testimonials styling */
+    #testimonials {
+      max-width: 700px;
+      margin: 0 auto 60px;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    #testimonials h2 {
+      margin-bottom: 30px;
+      font-size: 2rem;
+      color: #007acc;
+    }
+
+    .testimonial {
+      background-color: #fff;
+      padding: 20px 30px;
+      margin-bottom: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      font-style: italic;
+      color: #555;
+      position: relative;
+      font-family: Georgia, serif;
+    }
+
+    .testimonial::before {
+      content: "“";
+      font-size: 3rem;
+      color: #007acc;
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      font-weight: bold;
+      font-family: serif;
+    }
+
+    .testimonial cite {
+      display: block;
+      margin-top: 15px;
+      font-style: normal;
+      font-weight: 600;
+      color: #333;
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Babe Finder Global</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#form">Join</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact">Contact</a>
+      <a href="https://github.com" target="_blank" rel="noopener noreferrer">Github</a>
+    </nav>
+  </header>
+
+  <section>
+    <img src="4093597.jpg" alt="Babe Finder Global logo" />
+  </section>
+
+  <section id="about">
+    <h2>Our Mission At BFG</h2>
+    <p>
+      Thanks for your interest in joining our community. Please fill out the application form below so we can get to know you better and help find your perfect match.
+      Your information will be kept confidential and only used to enhance your experience with us.
+    </p>
+  </section>
+
+  <section id="services">
+    <h2>Services</h2>
+    <ul>
+      <li>Event Partner</li>
+      <li>Study Companion</li>
+      <li>Dinner Date</li>
+    </ul>
+  </section>
+
+  <section id="form">
+    <h2>Join our mailing list!</h2>
+    <form action="mailto:attohnathanan@gmail.com" method="POST" enctype="text/plain">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Write something..." required></textarea>
+
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <section id="testimonials">
+    <h2>What Our Members Say</h2>
+    <div class="testimonial">
+      <p>"Babe Finder Global helped me find amazing friends for study sessions. Highly recommend!"</p>
+      <cite>— Alex Johnson</cite>
+    </div>
+    <div class="testimonial">
+      <p>"The event partner service made attending conferences so much more fun and comfortable."</p>
+      <cite>— Maria Lee</cite>
+    </div>
+    <div class="testimonial">
+      <p>"I loved the personalized matching — found a perfect dinner date in no time."</p>
+      <cite>— Daniel Smith</cite>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Support</h2>
+    <p>Need help? We're here for you. If you’re experiencing issues, have questions, or just need guidance using Babe Finder Global, our support team is ready to assist you.</p>
+    <p>Email: <a href="mailto:attohnathanan@gmail.com">attohnathanan@gmail.com</a></p>
+  </section>
+
+  <footer>
+    &copy; 2025 BFA
+  </footer>
+</body>
+</html>
